@@ -39,7 +39,7 @@ jobs:
           jf rt ping
       # Configure JFrog CLI for NPM 
       - run: |
-          jf npmc --repo-deploy=ghjfdemo-ghjf-npm-virt --repo-resolve=ghjfdemo-ghjf-npm-remote
+          jf npmc --repo-deploy=githubdemo-npm --repo-resolve=githubdemo-npm-remote
       # NPM Install using the CLI  
       - run: |
           jf npm install --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
@@ -60,4 +60,4 @@ jobs:
            jf build-scan ghdemo-npm-build 1.0.${{github.run_number}}
       # Promote the Build from Dev to Production 
       - run: |
-          jf rt build-promote ghdemo-npm-build 1.0.${{github.run_number}} ghjfdemo-ghjf-npm-prod-local  --status=production
+          jf rt build-promote ghdemo-npm-build 1.0.${{github.run_number}} githubdemo-npm-local  --status=production
