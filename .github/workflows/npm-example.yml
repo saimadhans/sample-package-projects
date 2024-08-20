@@ -57,7 +57,7 @@ jobs:
           jf rt build-publish ghdemo-npm-build 1.0.${{github.run_number}}
       # Scan the NPM Build with Xray 
       - run: |
-           jf build-scan ghdemo-npm-build 1.0.${{github.run_number}} --fail=false
+           jf build-scan ghdemo-npm-build 1.0.${{github.run_number}} --fail=true
       # Promote the Build from Dev to Production 
       - run: |
           jf rt build-promote ghdemo-npm-build 1.0.${{github.run_number}} megnpm-npm-local  --status=production
