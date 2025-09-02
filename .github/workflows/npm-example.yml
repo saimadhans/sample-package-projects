@@ -26,7 +26,7 @@ jobs:
         name: Setup JFrog CLI
         id: setup-cli
         env:
-          JF_URL: https://https://solengin.jfrog.io/
+          JF_URL: https://solengin.jfrog.io/
           JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
         with:
             oidc-provider-name: github
