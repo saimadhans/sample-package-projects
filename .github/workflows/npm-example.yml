@@ -29,7 +29,7 @@ jobs:
           JF_URL: https://${{ vars.JF_URL }}/
           JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
         with:
-            oidc-provider-name: meg-github-jf
+            oidc-provider-name: github
       
       # This command adds a new server configuration to the JFrog CLI   
       - run: |
@@ -39,7 +39,7 @@ jobs:
           jf rt ping
       # Configure JFrog CLI for NPM 
       - run: |
-          jf npmc --repo-deploy=megnpm-npm-local --repo-resolve=githubdemo-npm-remote
+          jf npmc --repo-deploy=npmtest-local --repo-resolve=npmtest
       # NPM Install using the CLI  
       - run: |
           jf npm install --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
@@ -60,4 +60,4 @@ jobs:
            jf build-scan ghdemo-npm-build 1.0.${{github.run_number}}
       # Promote the Build from Dev to Production 
       - run: |
-          jf rt build-promote ghdemo-npm-build 1.0.${{github.run_number}} megnpm-npm-local  --status=production
+          jf rt build-promote ghdemo-npm-build 1.0.${{github.run_number}} npmtest-local --status=production
